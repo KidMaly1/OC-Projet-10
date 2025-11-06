@@ -28,17 +28,26 @@ describe("When Form is created", () => {
 });
 
 
-describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    // to implement
+describe("When a page is created",() => {
+  it("a list of events is displayed", async () => {
+    render(<Home />);
+    await screen.findAllByText("Nos réalisations");
+    const eventCards = screen.getAllByTestId("card-testid");
+    expect(eventCards.length).toBeGreaterThan(0); 
   })
-  it("a list a people is displayed", () => {
-    // to implement
+  it("a list of people is displayed", async () => {
+    render(<Home />);
+    const firstPerson = await screen.getByText("Samira");
+    expect(firstPerson).toBeInTheDocument();
   })
-  it("a footer is displayed", () => {
-    // to implement
+  it("a footer is displayed", async () => {
+    render(<Home />);
+    const footerDisplay = await screen.getByRole("contentinfo");
+    expect(footerDisplay).toBeInTheDocument();
   })
-  it("an event card, with the last event, is displayed", () => {
-    // to implement
+  it("an event card, with the last event, is displayed", async () => {
+    render(<Home />);
+    const lastEventSection = await screen.getByText("Notre dernière prestation");
+    expect(lastEventSection).toBeInTheDocument();
   })
 });
