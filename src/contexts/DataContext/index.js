@@ -38,7 +38,7 @@ export const DataProvider = ({ children }) => {
           return null;
         }
         return data.events.reduce((mostRecent, current) => {
-          if (!mostRecent || !mostRecent.date || (current.date && new Date(current.Date) > new Date(mostRecent.date)))
+          if (!mostRecent || !mostRecent.date || (current.date && new Date(current.date) > new Date(mostRecent.date)))
           {
             return current;
           }
